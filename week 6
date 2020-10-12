@@ -1,1 +1,80 @@
- Dacxx/dart-week-6-activity
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp(
+            home: Scaffold(
+                appBar: AppBar(
+                    title: Text('My First App'),
+                    centerTitle: true,
+                    leading: IconButton(
+                        icon: Icon(Icons.menu), 
+                        onPressed: null
+                    ),
+                ),
+                body: HomeContent(),
+                floatingActionButton: FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: null
+                ),
+            ),
+        );
+    }
+}
+
+class HomeContent extends StatefulWidget {
+    @override
+    _HomeContentState createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+    int counter = 0;
+
+    void increment() {
+        setState(() {
+            counter++;
+        });
+    }
+
+    void decrement(){
+      setState(() {
+        counter--;
+      });
+    }
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+          body: Center (
+            child: Container(
+              padding: EdgeInsets.all(30),
+              child: Column(children: <Widget> [
+                Text('Counter: $counter'),
+                SizedBox(height: 30),
+                if (counter % 2 == 0) Text('EVEN') else Text('ODD'),
+                SizedBox(height: 30),
+                new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      RaisedButton(
+                    onPressed: increment,
+                    child: Text('Increment'),
+                      ),
+                      RaisedButton(
+                    onPressed: decrement,
+                    child: Text('Decrement'),
+                    ),
+                    ],
+                ),
+              ],
+              ),
+            )
+            )
+        );
+    }
+}
